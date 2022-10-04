@@ -19,8 +19,8 @@ export default function App() {
   useEffect(() => {
     FetchImages(name, page)
       .then(res => {
-        setSearchResults(
-          page === 1 ? res.data.hits : [...searchResults, ...res.data.hits]
+        setSearchResults(s =>
+          page === 1 ? res.data.hits : [...s, ...res.data.hits]
         );
         setStatus('resolved');
         setTotalPages(Math.ceil(res.data.totalHits / 12));
@@ -29,7 +29,7 @@ export default function App() {
       .finally(() => {
         if (page === 1) window.scrollTo(0, 0);
       });
-  }, [name, page, searchResults]);
+  }, [name, page]);
 
   const getSubmitName = (name, page) => {
     setName(name);
