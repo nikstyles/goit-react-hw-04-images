@@ -29,7 +29,7 @@ export default function App() {
       .finally(() => {
         if (page === 1) window.scrollTo(0, 0);
       });
-  }, [name, page]);
+  }, [name, page, searchResults]);
 
   const getSubmitName = (name, page) => {
     setName(name);

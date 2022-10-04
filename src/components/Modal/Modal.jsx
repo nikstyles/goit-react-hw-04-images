@@ -5,11 +5,8 @@ import s from './Modal.module.css';
 export default function Modal({ children, onClose }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyUp);
-
-    return function cleanup() {
-      window.removeEventListener('keydown', handleKeyUp);
-    };
-  }, []);
+    return () => window.removeEventListener('keydown', handleKeyUp);
+  });
 
   // componentDidMount() {
   //   window.addEventListener('keydown', this.handleKeyUp);
